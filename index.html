@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Exception Mind Map</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+      color: #58a6ff;
+      text-align: center;
+    }
+
+    p.subtitle {
+      color: #8b949e;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .map {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    /* ── Central node ── */
+    .center-node {
+      background: #1f6feb;
+      color: #fff;
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 0 24px rgba(31,111,235,0.6);
+      flex-shrink: 0;
+    }
+
+    /* ── Branch row ── */
+    .branches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* ── Each branch card ── */
+    .branch {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      width: 200px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .branch:hover {
+      border-color: #58a6ff;
+      box-shadow: 0 0 12px rgba(88,166,255,0.3);
+    }
+
+    .branch-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .branch-title .icon {
+      font-size: 1.2rem;
+    }
+
+    .branch ul {
+      list-style: none;
+      padding: 0;
+      display: none;
+      margin-top: 0.4rem;
+    }
+
+    .branch.open ul {
+      display: block;
+    }
+
+    .branch ul li {
+      font-size: 0.82rem;
+      color: #8b949e;
+      padding: 0.18rem 0;
+      border-left: 2px solid #30363d;
+      padding-left: 0.5rem;
+      margin-left: 0.2rem;
+    }
+
+    .branch ul li:hover {
+      color: #e6edf3;
+      border-left-color: #58a6ff;
+    }
+
+    .toggle-hint {
+      font-size: 0.7rem;
+      color: #484f58;
+      margin-top: 0.5rem;
+    }
+
+    /* colour accents per branch */
+    .branch[data-color="red"]   { --accent: #f85149; }
+    .branch[data-color="orange"]{ --accent: #e3b341; }
+    .branch[data-color="green"] { --accent: #3fb950; }
+    .branch[data-color="blue"]  { --accent: #58a6ff; }
+    .branch[data-color="purple"]{ --accent: #bc8cff; }
+    .branch[data-color="teal"]  { --accent: #39d353; }
+
+    .branch .branch-title { color: var(--accent, #58a6ff); }
+    .branch.open          { border-color: var(--accent, #58a6ff); }
+
+    footer {
+      margin-top: 3rem;
+      color: #484f58;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 Security Exception Mind Map</h1>
+  <p class="subtitle">Exception Management — click any branch to expand</p>
+
+  <div class="map">
+    <div class="center-node">Exception<br>Management</div>
+
+    <div class="branches">
+
+      <div class="branch" data-color="red">
+        <div class="branch-title"><span class="icon">🚨</span> Exception Types</div>
+        <ul>
+          <li>Authentication Failure</li>
+          <li>Authorization Denied</li>
+          <li>Session Expired</li>
+          <li>Token Invalid / Revoked</li>
+          <li>MFA Challenge Failed</li>
+          <li>IP Blocklist Hit</li>
+        </ul>
+        <div class="toggle-hint">▸ click to expand</div>
+      </div>
+
+      <div class="branch" data-color="orange">
+        <div class="branch-title"><span class="icon">⚠️</span> Risk Levels</div>
+        <ul>
+          <li>Critical</li>
+          <li>High</li>
+          <li>Medium</li>
+          <li>Low</li>
+          <li>Informational</li>
+        </ul>
+        <div class="toggle-hint">▸ click to expand</div>
+      </div>
+
+      <div class="branch" data-color="blue">
+        <div class="branch-title"><span class="icon">🔍</span> Detection</div>
+        <ul>
+          <li>SIEM Alerts</li>
+          <li>Anomaly Detection</li>
+          <li>Rate Limit Triggers</li>
+          <li>Honeypot Hits</li>
+          <li>WAF Rules</li>
+          <li>IDS / IPS Signals</li>
+        </ul>
+        <div class="toggle-hint">▸ click to expand</div>
+      </div>
+
+      <div class="branch" data-color="purple">
+        <div class="branch-title"><span class="icon">📋</span> Response Process</div>
+        <ul>
+          <li>1. Identify &amp; Triage</li>
+          <li>2. Contain Threat</li>
+          <li>3. Investigate Root Cause</li>
+          <li>4. Remediate</li>
+          <li>5. Verify &amp; Close</li>
+          <li>6. Post-Mortem</li>
+        </ul>
+        <div class="toggle-hint">▸ click to expand</div>
+      </div>
+
+      <div class="branch" data-color="green">
+        <div class="branch-title"><span class="icon">🛡️</span> Mitigation</div>
+        <ul>
+          <li>Account Lockout</li>
+          <li>Token Revocation</li>
+          <li>IP Block / Throttle</li>
+          <li>Force Re-authentication</li>
+          <li>Patch &amp; Harden</li>
+          <li>Security Patch Deploy</li>
+        </ul>
+        <div class="toggle-hint">▸ click to expand</div>
+      </div>
+
+      <div class="branch" data-color="teal">
+        <div class="branch-title"><span class="icon">📊</span> Logging &amp; Audit</div>
+        <ul>
+          <li>Structured Log Format</li>
+          <li>Correlation IDs</li>
+          <li>Immutable Audit Trail</li>
+          <li>Retention Policy</li>
+          <li>Alerting Rules</li>
+          <li>Compliance Reporting</li>
+        </ul>
+        <div class="toggle-hint">▸ click to expand</div>
+      </div>
+
+      <div class="branch" data-color="red">
+        <div class="branch-title"><span class="icon">📣</span> Escalation</div>
+        <ul>
+          <li>On-Call Engineer</li>
+          <li>Security Team Lead</li>
+          <li>CISO / Management</li>
+          <li>Legal &amp; Compliance</li>
+          <li>Regulator Notification</li>
+        </ul>
+        <div class="toggle-hint">▸ click to expand</div>
+      </div>
+
+      <div class="branch" data-color="orange">
+        <div class="branch-title"><span class="icon">🔄</span> Prevention</div>
+        <ul>
+          <li>Threat Modelling</li>
+          <li>Secure Code Review</li>
+          <li>Penetration Testing</li>
+          <li>Dependency Scanning</li>
+          <li>Security Training</li>
+          <li>Zero-Trust Architecture</li>
+        </ul>
+        <div class="toggle-hint">▸ click to expand</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>Security Exception Mind Map · Exception Management</footer>
+
+  <script>
+    document.querySelectorAll('.branch').forEach(function (card) {
+      card.addEventListener('click', function () {
+        const isOpen = card.classList.toggle('open');
+        const hint = card.querySelector('.toggle-hint');
+        if (hint) hint.textContent = isOpen ? '▾ click to collapse' : '▸ click to expand';
+      });
+    });
+  </script>
+</body>
+</html>
