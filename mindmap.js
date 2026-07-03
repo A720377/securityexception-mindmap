@@ -431,9 +431,9 @@ function clampScale(s) { return Math.min(3, Math.max(0.2, s)); }
 /* ── Tooltip ──────────────────────────────────────────────── */
 function showTooltip(node, e) {
   const el = document.getElementById("tooltip");
-  el.innerHTML = `<strong>${node.label.replace("\n", " ")}</strong>${node.desc}`;
+  el.innerHTML = `<strong>${node.label.replace(/\n/g, " ")}</strong>${node.desc}`;
   if (node.tags && node.tags.length) {
-    el.innerHTML += `<div style="margin-top:6px">${node.tags.map(t => `<span class="tag">${t}</span>`).join(" ")}</div>`;
+    el.innerHTML += `<div class="tooltip-tags">${node.tags.map(t => `<span class="tag">${t}</span>`).join(" ")}</div>`;
   }
   el.classList.add("visible");
   moveTooltip(e);
@@ -461,7 +461,7 @@ function selectNode(node) {
   }
   selectedNode = node.id;
   const panel = document.getElementById("info-panel");
-  document.getElementById("info-title").textContent = node.label.replace("\n", " ");
+  document.getElementById("info-title").textContent = node.label.replace(/\n/g, " ");
   document.getElementById("info-desc").textContent  = node.desc;
   const tagsEl = document.getElementById("info-tags");
   tagsEl.innerHTML = "";

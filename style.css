@@ -163,6 +163,7 @@ svg#mindmap {
 }
 #tooltip.visible { opacity: 1; }
 #tooltip strong { display: block; color: var(--accent); margin-bottom: 4px; font-size: 13px; }
+.tooltip-tags { margin-top: 6px; }
 
 /* ── Info panel ───────────────────────────────────────────── */
 #info-panel {
@@ -183,6 +184,7 @@ svg#mindmap {
 #info-panel.open { transform: translateX(0); }
 #info-panel h2 { font-size: 14px; color: var(--accent); margin-bottom: 8px; }
 #info-panel p  { color: var(--text-muted); line-height: 1.6; }
+#info-tags { margin-top: 10px; }
 #info-panel .tag {
   display: inline-block; margin: 4px 2px 0;
   padding: 2px 8px;
