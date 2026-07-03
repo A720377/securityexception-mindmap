@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive mind map of common security exceptions – authentication, authorisation, cryptography, input validation, network security and data security." />
+  <title>Security Exception Mind Map</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header>
+    <h1>
+      <span class="icon" aria-hidden="true">🔐</span>
+      Security Exception Mind Map
+    </h1>
+    <div class="header-controls">
+      <button id="btn-zoom-in"  title="Zoom in"  aria-label="Zoom in">＋</button>
+      <button id="btn-zoom-out" title="Zoom out" aria-label="Zoom out">－</button>
+      <button id="btn-reset"    title="Reset view" aria-label="Reset view">⌂ Reset</button>
+    </div>
+  </header>
+
+  <!-- ── Canvas ───────────────────────────────────────────── -->
+  <div id="canvas-wrap" role="application" aria-label="Security Exception Mind Map – pan and zoom to explore">
+    <svg id="mindmap" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+  </div>
+
+  <!-- ── Tooltip ──────────────────────────────────────────── -->
+  <div id="tooltip" role="tooltip" aria-live="polite"></div>
+
+  <!-- ── Info panel (click on a node) ────────────────────── -->
+  <aside id="info-panel" aria-label="Node detail panel">
+    <button id="info-close" aria-label="Close panel">✕</button>
+    <h2 id="info-title"></h2>
+    <p  id="info-desc"></p>
+    <div id="info-tags" style="margin-top:10px"></div>
+  </aside>
+
+  <!-- ── Legend ───────────────────────────────────────────── -->
+  <nav id="legend" aria-label="Colour legend">
+    <h3>Legend</h3>
+    <div class="legend-item"><span class="legend-dot" style="background:#238636"></span>Root category</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#1f6feb"></span>Domain (L1)</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#6e40c9"></span>Exception type (L2)</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#da3633"></span>Specific exception (L3)</div>
+  </nav>
+
+  <!-- ── Zoom level indicator ─────────────────────────────── -->
+  <div id="zoom-level" aria-live="polite" aria-label="Zoom level">100%</div>
+
+  <script src="mindmap.js"></script>
+</body>
+</html>
